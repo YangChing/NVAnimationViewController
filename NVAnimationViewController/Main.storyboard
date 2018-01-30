@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mbq-c7-D5n">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangTC-Regular</string>
+            <string>PingFangTC-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="dV0-jj-glH">
+            <objects>
+                <viewController id="e4J-ez-gKM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tYK-n2-5n3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I93-jZ-cBG">
+                                <rect key="frame" x="165" y="318.5" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="qOJ-XG-RsK" kind="show" id="5zy-j8-E1y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="I93-jZ-cBG" firstAttribute="centerY" secondItem="tYK-n2-5n3" secondAttribute="centerY" id="1pp-j5-q8G"/>
+                            <constraint firstItem="I93-jZ-cBG" firstAttribute="centerX" secondItem="tYK-n2-5n3" secondAttribute="centerX" id="VhN-Hw-HsM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FdC-Vu-dke"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BR1-ll-gWI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="71F-Il-NSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834" y="806"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="NfH-GN-w0R">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="qOJ-XG-RsK" customClass="TestViewController" customModule="AnimationScroller" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wAa-pU-jE6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="72i-dj-ueW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantInfoCell" rowHeight="1500" id="ZDA-Yn-ado" customClass="RestaurantInfoCell" customModule="AnimationScroller" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="1500"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZDA-Yn-ado" id="kXA-lZ-vAc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="法式料理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC5-E5-RAX">
+                                                    <rect key="frame" x="28" y="16" width="48" height="17"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
+                                                    <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geschmark 葛許曼法式餐廳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLK-AZ-BjF">
+                                                    <rect key="frame" x="28" y="41" width="229" height="25.5"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                                    <color key="textColor" red="0.1843137255" green="0.1764705882" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fm-g7-THd">
+                                                    <rect key="frame" x="28" y="104" width="319" height="933.5"/>
+                                                    <string key="text">較具有特色的食品有：青蛙腿、燉雞、法國蝸牛、油封鴨；主食主要是麵包，具有法國特色的麵包有可頌和棍式麵包。台灣最早引進正統法式精緻餐飲的餐廳之一，法國餐館以其豪華的禮儀和風味著稱，世界各大城市中最豪華昂貴的餐館幾乎都是法國餐館。法國是世界著名的飲食文化大國，在法國不同地區有不同的特色美食。法國比較具有特色的食品有：青蛙腿（grenouille）、燉雞（coq au vin）、法國蝸牛（escargot）、油封鴨（confit de canard）；主食主要是麵包，具有法國特色的麵包有可頌（croissant）和棍式麵包（baguette）。較具有特色的食品有：青蛙腿（grenouille）、燉雞（coq au vin）、法國蝸牛（escargot）、油封鴨（confit de canard）；主食主要是麵包，具有法國特色的麵包有可頌（croissant）和棍式麵包（baguette）。台灣最早引進正統法式精緻餐飲的餐廳之一，法國餐館以其豪華的禮儀和風味著稱，世界各大城市中最豪華昂貴的餐館幾乎都是法國餐館。法國是世界著名的飲食文化大國，在法國不同地區有不同的特色美食。法國比較具有特色的食品有：青蛙腿（grenouille）、燉雞（coq au vin）、法國蝸牛（escargot）、油封鴨（confit de canard）；主食主要是麵包，具有法國特色的麵包有可頌（croissant）和棍式麵包（baguette）。較具有特色的食品有：青蛙腿（grenouille）、燉雞（coq au vin）、法國蝸牛（escargot）、油封鴨（confit de canard）；主食主要是麵包，具有法國特色的麵包有可頌（croissant）和棍式麵包（baguette）。台灣最早引進正統法式精緻餐飲的餐廳之一，法國餐館以其豪華的禮儀和風味著稱，世界各大城市中最豪華昂貴的餐館幾乎都是法國餐館。法國是世界著名的飲食文化大國，在法國不同地區有不同的特色美食。法國比較具有特色的食品有：青蛙腿（grenouille）、燉雞（coq au vin）、法國蝸牛（escargot）、油封鴨（confit de canard）；主食主要是麵包，具有法國特色的麵包有可頌（croissant）和棍式麵包（baguette）。</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDX-cX-Arl">
+                                                    <rect key="frame" x="310" y="5" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="DP3-0M-wr6"/>
+                                                        <constraint firstAttribute="height" constant="40" id="Wvi-dB-N3t"/>
+                                                    </constraints>
+                                                    <state key="normal" image="dicover_icon_rank"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1B-Em-uD0">
+                                                    <rect key="frame" x="28" y="74" width="212" height="20"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="心價比 3.2 | 服務 3.8 | 環境 3.8   ">
+                                                            <attributes>
+                                                                <font key="NSFont" size="14" name="PingFangTC-Regular"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2B-jU-vOL">
+                                                    <rect key="frame" x="270" y="5" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="6YI-qx-22q"/>
+                                                        <constraint firstAttribute="height" constant="40" id="cON-yu-i3G"/>
+                                                    </constraints>
+                                                    <state key="normal" image="dicover_icon_collect"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MDX-cX-Arl" firstAttribute="leading" secondItem="Q2B-jU-vOL" secondAttribute="trailing" id="4Zd-Nq-rtb"/>
+                                                <constraint firstItem="xLK-AZ-BjF" firstAttribute="leading" secondItem="kXA-lZ-vAc" secondAttribute="leadingMargin" constant="13" id="5Jf-zR-pJq"/>
+                                                <constraint firstItem="L1B-Em-uD0" firstAttribute="top" secondItem="xLK-AZ-BjF" secondAttribute="bottom" constant="7.5" id="5r8-XZ-G8L"/>
+                                                <constraint firstItem="MDX-cX-Arl" firstAttribute="centerY" secondItem="lC5-E5-RAX" secondAttribute="centerY" id="8Zd-bk-uX1"/>
+                                                <constraint firstItem="2fm-g7-THd" firstAttribute="top" secondItem="L1B-Em-uD0" secondAttribute="bottom" constant="10" id="Dso-ej-ol5"/>
+                                                <constraint firstItem="2fm-g7-THd" firstAttribute="centerX" secondItem="kXA-lZ-vAc" secondAttribute="centerX" id="Edu-Hp-M9D"/>
+                                                <constraint firstItem="lC5-E5-RAX" firstAttribute="leading" secondItem="kXA-lZ-vAc" secondAttribute="leadingMargin" constant="13" id="Fe6-GP-kFI"/>
+                                                <constraint firstItem="xLK-AZ-BjF" firstAttribute="top" secondItem="lC5-E5-RAX" secondAttribute="bottom" constant="8" id="O8E-K4-Zm2"/>
+                                                <constraint firstItem="Q2B-jU-vOL" firstAttribute="centerY" secondItem="MDX-cX-Arl" secondAttribute="centerY" id="TSB-Me-8he"/>
+                                                <constraint firstItem="lC5-E5-RAX" firstAttribute="top" secondItem="kXA-lZ-vAc" secondAttribute="topMargin" constant="5" id="dpa-bt-GRy"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2fm-g7-THd" secondAttribute="bottom" constant="10" id="dwr-eA-fo4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="MDX-cX-Arl" secondAttribute="trailing" constant="10" id="lTE-CC-gac"/>
+                                                <constraint firstItem="L1B-Em-uD0" firstAttribute="leading" secondItem="xLK-AZ-BjF" secondAttribute="leading" id="ngS-Kn-DCp"/>
+                                                <constraint firstItem="2fm-g7-THd" firstAttribute="leading" secondItem="L1B-Em-uD0" secondAttribute="leading" id="ylc-0b-KK9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="leftButton" destination="Q2B-jU-vOL" id="6YX-3z-BW4"/>
+                                            <outlet property="rightButton" destination="MDX-cX-Arl" id="lzG-pL-P7i"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4S4-Ju-RtT" firstAttribute="bottom" secondItem="72i-dj-ueW" secondAttribute="bottom" id="0do-jF-Od2"/>
+                            <constraint firstItem="4S4-Ju-RtT" firstAttribute="trailing" secondItem="72i-dj-ueW" secondAttribute="trailing" id="6JC-Np-pLw"/>
+                            <constraint firstItem="72i-dj-ueW" firstAttribute="leading" secondItem="4S4-Ju-RtT" secondAttribute="leading" id="UE9-SO-LcX"/>
+                            <constraint firstItem="72i-dj-ueW" firstAttribute="top" secondItem="4S4-Ju-RtT" secondAttribute="top" id="jtN-D4-K1g"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4S4-Ju-RtT"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableViewTopSpace" destination="jtN-D4-K1g" id="zlD-KL-pKz"/>
+                        <outlet property="tableview" destination="72i-dj-ueW" id="AON-gC-qug"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y5C-95-oNj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1625" y="807"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RNg-Qe-hJc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mbq-c7-D5n" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cn4-iF-kMh">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e4J-ez-gKM" kind="relationship" relationship="rootViewController" id="0T9-gJ-GPj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxj-VR-Cvs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10" y="807"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="dicover_icon_collect" width="21" height="21"/>
+        <image name="dicover_icon_rank" width="25" height="25"/>
+    </resources>
+</document>
