@@ -40,6 +40,7 @@ open class NVAnimationViewController: UIViewController {
   var backButton: UIButton!
   // main image
   open var mainImage: UIImageView!
+  open var mainImageDefaultHeight: CGFloat!
 
   open override func viewDidLoad() {
     super.viewDidLoad()
@@ -60,7 +61,8 @@ open class NVAnimationViewController: UIViewController {
     setNavigationBar()
     setStatusBar()
     createReferenceView()
-    clearColorCellHeight = mainImage.frame.height - (navigationController?.navigationBar.frame.height ?? 0)
+    clearColorCellHeight = mainImage.frame.height - (navigationController?.navigationBar.frame.height ?? 0) - (UIApplication.shared.statusBarFrame.height)
+    mainImageDefaultHeight = clearColorCellHeight
   }
 
   open override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +71,7 @@ open class NVAnimationViewController: UIViewController {
 
   open override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    if ( leftButton != nil && nvLeftButton == nil ) || ( rightButton != nil && nvRightButton == nil ){
+    if ( leftButton != nil && nvLeftButton == nil ) || ( rightButton != nil && nvRightButton == nil ) {
       // get button location
       setButton()
     }
@@ -95,7 +97,7 @@ open class NVAnimationViewController: UIViewController {
   }
 
   @objc open func back() {
-    navigationController?.dismiss(animated: true, completion: nil)
+    navigationController?.popViewController(animated: true)
   }
 
   func createReferenceView() {
@@ -140,9 +142,21 @@ open class NVAnimationViewController: UIViewController {
     }
   }
 
+  open func setNvLeftButtonImage(image: UIImage?, status: UIControlState = .normal) {
+    if nvLeftButton != nil {
+      nvLeftButton!.setImage(image, for: status)
+    }
+  }
+
   @objc private func nvRightButtonEvent() {
     if let rightButton = rightButton {
       rightButton.sendActions(for: .touchDown)
+    }
+  }
+
+  open func setNvRightButtonImage(image: UIImage?, status: UIControlState = .normal) {
+    if nvRightButton != nil {
+      nvRightButton!.setImage(image, for: status)
     }
   }
 
@@ -172,6 +186,7 @@ open class NVAnimationViewController: UIViewController {
   }
 
   public func setImageViewInVC(imageName: String? = nil, image: UIImage? = nil) {
+
     let fullScreenSize = UIScreen.main.bounds.size
     let mainImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: fullScreenSize.width, height: 251))
     if let imageName = imageName {
@@ -283,7 +298,7 @@ extension NVAnimationViewController: UITableViewDelegate, UITableViewDataSource 
       break
     }
     // 控制Navgation Bar 下方橘色分隔線顯示時機
-    if yPosition > mainImage.frame.height {
+    if yPosition > clearColorCellHeight {
       navigationController?.navigationBar.shadowImage = UIImage(color: UIColor(red: 213 / 255, green: 188 / 255, blue: 149 / 255, alpha: 1))
     } else {
       navigationController?.navigationBar.shadowImage = UIImage()
@@ -296,9 +311,9 @@ extension NVAnimationViewController: UITableViewDelegate, UITableViewDataSource 
     }
     if mainImage.frame.height > 9 {
       if translation.y > 0 {
-        mainImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: max(clearColorCellHeight - yPosition + (navigationController?.navigationBar.frame.height ?? 0), 50))
+        mainImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: max(clearColorCellHeight - yPosition + (navigationController?.navigationBar.frame.height ?? 0) + (UIApplication.shared.statusBarFrame.height), 50))
       } else {
-        mainImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: max(clearColorCellHeight - yPosition + (navigationController?.navigationBar.frame.height ?? 0), 50))
+        mainImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: max(clearColorCellHeight - yPosition + (navigationController?.navigationBar.frame.height ?? 0) + (UIApplication.shared.statusBarFrame.height), 50))
       }
     }
   }
