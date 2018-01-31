@@ -363,10 +363,35 @@ extension CAGradientLayer {
 
 extension UINavigationBar {
 
+  func checkiPhoneModel() -> String {
+    if UIDevice().userInterfaceIdiom == .phone {
+      switch UIScreen.main.nativeBounds.height {
+      case 1136:
+        return "5, 5s, 5c, se"
+      case 1334:
+        return "6, 6s, 7"
+      case 2208:
+        return "6+, 6S+, 7+"
+      case 2436:
+        return "X"
+      default:
+        return "unknown"
+      }
+    }
+    return ""
+  }
+
   func setGradientBackground(colors: [UIColor]) {
 
     var updatedFrame = bounds
-    updatedFrame.size.height += 20
+    var size: CGFloat = 20
+    if self.checkiPhoneModel() == "X" {
+      size = 44
+    }
+    else {
+      size = 20
+    }
+    updatedFrame.size.height += size
     let gradientLayer = CAGradientLayer(frame: updatedFrame, colors: colors)
 
     setBackgroundImage(gradientLayer.creatGradientImage(), for: UIBarMetrics.default)
