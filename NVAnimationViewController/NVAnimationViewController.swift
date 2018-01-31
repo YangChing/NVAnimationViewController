@@ -15,7 +15,7 @@ protocol NVAnimationViewControllerDataSource {
 open class NVAnimationViewController: UIViewController {
 
   @IBOutlet var tableViewTopSpace: NSLayoutConstraint!
-  @IBOutlet open var tableview: UITableView!
+  @IBOutlet open var tableView: UITableView!
 
   // Must Paramater
   @IBOutlet public var imageName: String?
@@ -44,16 +44,16 @@ open class NVAnimationViewController: UIViewController {
 
   open override func viewDidLoad() {
     super.viewDidLoad()
-    tableview.delegate = self
-    tableview.dataSource = self
+    tableView.delegate = self
+    tableView.dataSource = self
     // set main image
     setImageViewInVC(imageName: imageName ?? "img_restaurant02")
     // register clear color cell
-    tableview.register(UINib(nibName: "ClearColorCell", bundle: Bundle(for: NVAnimationViewController.self)), forCellReuseIdentifier: "ClearColorCell")
-    tableview.backgroundColor = .clear
+    tableView.register(UINib(nibName: "ClearColorCell", bundle: Bundle(for: NVAnimationViewController.self)), forCellReuseIdentifier: "ClearColorCell")
+    tableView.backgroundColor = .clear
 
     if #available(iOS 11.0, *) {
-      self.tableview.contentInsetAdjustmentBehavior = .never
+      self.tableView.contentInsetAdjustmentBehavior = .never
     } else {
       automaticallyAdjustsScrollViewInsets = false
       navigationController?.automaticallyAdjustsScrollViewInsets = false
@@ -236,7 +236,7 @@ extension NVAnimationViewController: UITableViewDelegate, UITableViewDataSource 
 
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
-    let yPosition = tableview.contentOffset.y
+    let yPosition = tableView.contentOffset.y
     // control navigationBar color
     let fadeOutRange: CGFloat = 100
     switch yPosition {

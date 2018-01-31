@@ -49,7 +49,7 @@
         <!--Test View Controller-->
         <scene sceneID="NfH-GN-w0R">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="qOJ-XG-RsK" customClass="TestViewController" customModule="AnimationScroller" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="qOJ-XG-RsK" customClass="TestViewController" customModule="NVAnimationViewController" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wAa-pU-jE6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantInfoCell" rowHeight="1500" id="ZDA-Yn-ado" customClass="RestaurantInfoCell" customModule="AnimationScroller" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantInfoCell" rowHeight="1500" id="ZDA-Yn-ado" customClass="RestaurantInfoCell" customModule="NVAnimationViewController" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="1500"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZDA-Yn-ado" id="kXA-lZ-vAc">
@@ -147,8 +147,8 @@
                         <viewLayoutGuide key="safeArea" id="4S4-Ju-RtT"/>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="72i-dj-ueW" id="jel-UN-Qm3"/>
                         <outlet property="tableViewTopSpace" destination="jtN-D4-K1g" id="zlD-KL-pKz"/>
-                        <outlet property="tableview" destination="72i-dj-ueW" id="AON-gC-qug"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5C-95-oNj" userLabel="First Responder" sceneMemberID="firstResponder"/>
