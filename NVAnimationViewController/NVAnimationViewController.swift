@@ -117,7 +117,7 @@ open class NVAnimationViewController: UIViewController {
       nvLeftButton = UIButton()
       nvLeftButton?.frame = leftButton.frame
       nvLeftButton?.setImage(leftButton.imageView?.image, for: .normal)
-      nvLeftButton?.addTarget(self, action: #selector(nvLeftButtonEvent), for: .touchDown)
+      nvLeftButton?.addTarget(self, action: #selector(nvLeftButtonEvent), for: .touchUpInside)
       leftIconDistance = (nvLeftButton?.frame.origin.y)!
       leftIconHeight = (nvLeftButton?.frame.height)!
       leftIconFrame = nvLeftButton?.frame
@@ -127,7 +127,7 @@ open class NVAnimationViewController: UIViewController {
       nvRightButton = UIButton()
       nvRightButton?.frame = rightButton.frame
       nvRightButton?.setImage(rightButton.imageView?.image, for: .normal)
-      nvRightButton?.addTarget(self, action: #selector(nvRightButtonEvent), for: .touchDown)
+      nvRightButton?.addTarget(self, action: #selector(nvRightButtonEvent), for: .touchUpInside)
       rightIconDistance = (nvRightButton?.frame.origin.y)!
       rightIconHeight = (nvRightButton?.frame.height)!
       rightIconFrame = nvRightButton?.frame
@@ -138,7 +138,7 @@ open class NVAnimationViewController: UIViewController {
 
   @objc private func nvLeftButtonEvent() {
     if let leftButton = leftButton {
-      leftButton.sendActions(for: .touchDown)
+      leftButton.sendActions(for: .touchUpInside)
     }
   }
 
@@ -150,7 +150,7 @@ open class NVAnimationViewController: UIViewController {
 
   @objc private func nvRightButtonEvent() {
     if let rightButton = rightButton {
-      rightButton.sendActions(for: .touchDown)
+      rightButton.sendActions(for: .touchUpInside)
     }
   }
 
