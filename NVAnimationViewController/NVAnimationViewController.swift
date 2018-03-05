@@ -58,8 +58,7 @@ open class NVAnimationViewController: UIViewController {
       automaticallyAdjustsScrollViewInsets = false
       navigationController?.automaticallyAdjustsScrollViewInsets = false
     }
-    setNavigationBar()
-    setStatusBar()
+
     createReferenceView()
     clearColorCellHeight = mainImage.frame.height - (navigationController?.navigationBar.frame.height ?? 0) - (UIApplication.shared.statusBarFrame.height)
     mainImageDefaultHeight = clearColorCellHeight
@@ -67,6 +66,8 @@ open class NVAnimationViewController: UIViewController {
 
   open override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    setNavigationBar()
+    setStatusBar()
   }
 
   open override func viewDidAppear(_ animated: Bool) {
@@ -78,11 +79,7 @@ open class NVAnimationViewController: UIViewController {
   }
 
   open override func viewWillDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
-
-  }
-
-  deinit {
+    super.viewWillDisappear(animated)
     if referenceView != nil {
       self.referenceView.removeFromSuperview()
     }
@@ -90,6 +87,15 @@ open class NVAnimationViewController: UIViewController {
     navigationController?.navigationBar.shadowImage = nil
     UIApplication.shared.statusBarStyle = .default
   }
+
+//  deinit {
+//    if referenceView != nil {
+//      self.referenceView.removeFromSuperview()
+//    }
+//    navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+//    navigationController?.navigationBar.shadowImage = nil
+//    UIApplication.shared.statusBarStyle = .default
+//  }
 
   open override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
