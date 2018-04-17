@@ -31,10 +31,8 @@ open class NVAnimationViewController: UIViewController {
   fileprivate var clearColorCellHeight: CGFloat = 0
   // for control navigation bar button paramaters
   fileprivate var leftIconDistance: CGFloat = 0
-  fileprivate var leftIconHeight: CGFloat = 0
   fileprivate var leftIconFrame: CGRect!
   fileprivate var rightIconDistance: CGFloat = 0
-  fileprivate var rightIconHeight: CGFloat = 0
   fileprivate var rightIconFrame: CGRect!
   // for control back button
   var backButton: UIButton!
@@ -66,6 +64,7 @@ open class NVAnimationViewController: UIViewController {
 
   open override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    referenceView.isHidden = false
     setNavigationBar()
     setStatusBar()
   }
@@ -80,9 +79,7 @@ open class NVAnimationViewController: UIViewController {
 
   open override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    if referenceView != nil {
-      self.referenceView.removeFromSuperview()
-    }
+    referenceView.isHidden = true
     navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
     navigationController?.navigationBar.shadowImage = nil
     UIApplication.shared.statusBarStyle = .default
@@ -96,11 +93,6 @@ open class NVAnimationViewController: UIViewController {
 //    navigationController?.navigationBar.shadowImage = nil
 //    UIApplication.shared.statusBarStyle = .default
 //  }
-
-  open override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
 
   @objc open func back() {
     navigationController?.popViewController(animated: true)
@@ -125,7 +117,6 @@ open class NVAnimationViewController: UIViewController {
       nvLeftButton?.setImage(leftButton.imageView?.image, for: .normal)
       nvLeftButton?.addTarget(self, action: #selector(nvLeftButtonEvent), for: .touchUpInside)
       leftIconDistance = (nvLeftButton?.frame.origin.y)!
-      leftIconHeight = (nvLeftButton?.frame.height)!
       leftIconFrame = nvLeftButton?.frame
       referenceView.addSubview(nvLeftButton!)
     }
@@ -135,7 +126,6 @@ open class NVAnimationViewController: UIViewController {
       nvRightButton?.setImage(rightButton.imageView?.image, for: .normal)
       nvRightButton?.addTarget(self, action: #selector(nvRightButtonEvent), for: .touchUpInside)
       rightIconDistance = (nvRightButton?.frame.origin.y)!
-      rightIconHeight = (nvRightButton?.frame.height)!
       rightIconFrame = nvRightButton?.frame
       referenceView.addSubview(nvRightButton!)
     }
@@ -259,6 +249,9 @@ extension NVAnimationViewController: UITableViewDelegate, UITableViewDataSource 
       UIApplication.shared.statusBarStyle = .lightContent
     // 開始變色
     case (clearColorCellHeight - fadeOutRange)..<CGFloat.greatestFiniteMagnitude:
+      UIApplication.shared.statusBarStyle = .default
+      let blackBackImage = UIImage(named: "icon_back", in: Bundle(for: NVAnimationViewController.self), compatibleWith: nil)
+      backButton.setImage(blackBackImage, for: .normal)
       if yPosition <= clearColorCellHeight {
         var colors = [UIColor]()
         let rgbNum: CGFloat = 255.0 // (yPosition - imageHeight + fadeOutRange) * 255/fadeOutRange
@@ -266,39 +259,20 @@ extension NVAnimationViewController: UITableViewDelegate, UITableViewDataSource 
         colors.append(UIColor(red: rgbNum / 255, green: rgbNum / 255, blue: rgbNum / 255, alpha: 0 + bottomAlpha))
         colors.append(UIColor(red: rgbNum / 255, green: rgbNum / 255, blue: rgbNum / 255, alpha: 0 + bottomAlpha))
         navigationController?.navigationBar.setGradientBackground(colors: colors)
-        let blackBackImage = UIImage(named: "icon_back", in: Bundle(for: NVAnimationViewController.self), compatibleWith: nil)
-        backButton.setImage(blackBackImage, for: .normal)
-        UIApplication.shared.statusBarStyle = .default
-      } else if yPosition > 0 && yPosition > clearColorCellHeight {
+      } else {
         navigationController?.navigationBar.setGradientBackground(colors: whiteColors())
       }
-      switch yPosition {
-      case (clearColorCellHeight - 66)..<(clearColorCellHeight + leftIconDistance + leftIconHeight):
-        if nvLeftButton != nil {
-          nvLeftButton!.frame = CGRect(x: leftIconFrame.origin.x - referenceView.frame.origin.x,
-                                       y: max((clearColorCellHeight + leftIconDistance) - yPosition + (navigationController?.navigationBar.frame.height ?? 0), 0),
-                                       width: leftIconFrame.width,
-                                       height: leftIconFrame.height)
-        }
-        if nvRightButton != nil {
-          nvRightButton!.frame = CGRect(x: rightIconFrame.origin.x - referenceView.frame.origin.x,
-                                        y: max((clearColorCellHeight + rightIconDistance) - yPosition + (navigationController?.navigationBar.frame.height ?? 0), 0),
-                                        width: rightIconFrame.width,
-                                        height: rightIconFrame.height)
-        }
-      default:
-        if nvLeftButton != nil {
-          nvLeftButton!.frame = CGRect(x: leftIconFrame.origin.x - referenceView.frame.origin.x,
-                                       y: max((clearColorCellHeight + leftIconDistance) - yPosition + (navigationController?.navigationBar.frame.height ?? 0), 0),
-                                       width: leftIconFrame.width,
-                                       height: leftIconFrame.height)
-        }
-        if nvRightButton != nil {
-          nvRightButton!.frame = CGRect(x: rightIconFrame.origin.x - referenceView.frame.origin.x,
-                                        y: max((clearColorCellHeight + rightIconDistance) - yPosition + (navigationController?.navigationBar.frame.height ?? 0), 0),
-                                        width: rightIconFrame.width,
-                                        height: rightIconFrame.height)
-        }
+      if nvLeftButton != nil {
+        nvLeftButton!.frame = CGRect(x: leftIconFrame.origin.x - referenceView.frame.origin.x,
+                                     y: max((clearColorCellHeight + leftIconDistance) - yPosition + (navigationController?.navigationBar.frame.height ?? 0), 0),
+                                     width: leftIconFrame.width,
+                                     height: leftIconFrame.height)
+      }
+      if nvRightButton != nil {
+        nvRightButton!.frame = CGRect(x: rightIconFrame.origin.x - referenceView.frame.origin.x,
+                                      y: max((clearColorCellHeight + rightIconDistance) - yPosition + (navigationController?.navigationBar.frame.height ?? 0), 0),
+                                      width: rightIconFrame.width,
+                                      height: rightIconFrame.height)
       }
     default:
       break
