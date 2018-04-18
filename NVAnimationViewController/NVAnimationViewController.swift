@@ -279,7 +279,7 @@ extension NVAnimationViewController: UITableViewDelegate, UITableViewDataSource 
     }
     // 控制Navgation Bar 下方橘色分隔線顯示時機
     if yPosition > clearColorCellHeight {
-      navigationController?.navigationBar.shadowImage = UIImage(color: UIColor(red: 213 / 255, green: 188 / 255, blue: 149 / 255, alpha: 1))
+      navigationController?.navigationBar.shadowImage = UIImage(color: UIColor(red: 186 / 255, green: 143 / 255, blue: 92 / 255, alpha: 1))
     } else {
       navigationController?.navigationBar.shadowImage = UIImage()
     }
