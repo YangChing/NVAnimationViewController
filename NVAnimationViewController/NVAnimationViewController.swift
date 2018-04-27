@@ -122,7 +122,7 @@ open class NVAnimationViewController: UIViewController {
     }
     if let rightButton = rightButton {
       nvRightButton = UIButton()
-      nvRightButton?.frame = rightButton.frame
+      nvRightButton?.frame = CGRect(x: rightButton.frame.origin.x, y: rightButton.frame.origin.y, width: rightButton.frame.width, height: (navigationController?.navigationBar.frame.height)!)
       nvRightButton?.setImage(rightButton.imageView?.image, for: .normal)
       nvRightButton?.addTarget(self, action: #selector(nvRightButtonEvent), for: .touchUpInside)
       rightIconDistance = (nvRightButton?.frame.origin.y)!
