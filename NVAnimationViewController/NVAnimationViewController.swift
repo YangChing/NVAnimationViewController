@@ -35,7 +35,7 @@ open class NVAnimationViewController: UIViewController {
   fileprivate var rightIconDistance: CGFloat = 0
   fileprivate var rightIconFrame: CGRect!
   // for control back button
-  var backButton: UIButton!
+  public var backButton: UIButton!
   // main image
   open var mainImage: UIImageView!
   open var mainImageDefaultHeight: CGFloat!
@@ -93,7 +93,12 @@ open class NVAnimationViewController: UIViewController {
 //    navigationController?.navigationBar.shadowImage = nil
 //    UIApplication.shared.statusBarStyle = .default
 //  }
-
+  
+  public func setClearColorCellHeight(_ height: CGFloat) {
+    clearColorCellHeight = height
+    updateScrollPosition()
+  }
+  
   @objc open func back() {
     navigationController?.popViewController(animated: true)
   }
@@ -231,12 +236,20 @@ extension NVAnimationViewController: UITableViewDelegate, UITableViewDataSource 
   }
 
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+    updateScrollPosition(scrollView)
+  }
+  
+  fileprivate func updateScrollPosition(_ scrollView: UIScrollView? = nil) {
+    let scrollView: UIScrollView = scrollView != nil ? scrollView! : tableView
+    
     let yPosition = tableView.contentOffset.y
     // control navigationBar color
-    let fadeOutRange: CGFloat = 100
+    let fadeOutRange: CGFloat = min(100, clearColorCellHeight)
     switch yPosition {
-    case CGFloat.leastNormalMagnitude..<(clearColorCellHeight - fadeOutRange):
+    case -CGFloat.greatestFiniteMagnitude..<(clearColorCellHeight - fadeOutRange):
+      if clearColorCellHeight <= 0 {
+        break
+      }
       var colors = [UIColor]()
       colors.append(UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.6))
       colors.append(UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0))
@@ -255,7 +268,7 @@ extension NVAnimationViewController: UITableViewDelegate, UITableViewDataSource 
       if yPosition <= clearColorCellHeight {
         var colors = [UIColor]()
         let rgbNum: CGFloat = 255.0 // (yPosition - imageHeight + fadeOutRange) * 255/fadeOutRange
-        let bottomAlpha = (yPosition - clearColorCellHeight + fadeOutRange) / fadeOutRange
+        let bottomAlpha = fadeOutRange > 0 ? (yPosition - clearColorCellHeight + fadeOutRange) / fadeOutRange : 1
         colors.append(UIColor(red: rgbNum / 255, green: rgbNum / 255, blue: rgbNum / 255, alpha: 0 + bottomAlpha))
         colors.append(UIColor(red: rgbNum / 255, green: rgbNum / 255, blue: rgbNum / 255, alpha: 0 + bottomAlpha))
         navigationController?.navigationBar.setGradientBackground(colors: colors)
