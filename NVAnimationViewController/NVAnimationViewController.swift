@@ -363,10 +363,14 @@ extension UINavigationBar {
         return "5, 5s, 5c, se"
       case 1334:
         return "6, 6s, 7"
+      case 1792:
+        return "XR"
       case 2208:
         return "6+, 6S+, 7+"
       case 2436:
         return "X"
+      case 2688:
+        return "Xs Max"
       default:
         return "unknown"
       }
@@ -378,7 +382,7 @@ extension UINavigationBar {
 
     var updatedFrame = bounds
     var size: CGFloat = 20
-    if self.checkiPhoneModel() == "X" {
+    if self.checkiPhoneModel() == "X" || self.checkiPhoneModel() == "Xs Max" || self.checkiPhoneModel() == "XR" {
       size = 44
     }
     else {
