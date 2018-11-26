@@ -223,6 +223,7 @@ extension NVAnimationViewController: UITableViewDelegate, UITableViewDataSource 
   open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ClearColorCell", for: indexPath)
     if let cell = cell as? ClearColorCell {
+      cell.selectionStyle = .none
       cell.backgroundColor = .clear
     }
     return cell

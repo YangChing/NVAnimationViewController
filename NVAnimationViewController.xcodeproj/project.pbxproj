@@ -39,7 +39,7 @@
 		64B9534A201AD18200D9CB59 /* ClearColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClearColorCell.xib; sourceTree = "<group>"; };
 		64B9534B201AD18200D9CB59 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		64B9534C201AD18200D9CB59 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		64B9534D201AD18200D9CB59 /* NVAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVAnimationViewController.swift; sourceTree = "<group>"; };
+		64B9534D201AD18200D9CB59 /* NVAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = NVAnimationViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		64B95354201AD1AB00D9CB59 /* icon_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back_white@2x.png"; sourceTree = "<group>"; };
 		64B95355201AD1AB00D9CB59 /* icon_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_back.png; sourceTree = "<group>"; };
 		64B95356201AD1AB00D9CB59 /* icon_back_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back_white@3x.png"; sourceTree = "<group>"; };
